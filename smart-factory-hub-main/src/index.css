@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Industrial Automation Design System */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* Industrial Dark Theme */
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 8%;
+
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 28% 17%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 45 93% 47%;
+    --accent-foreground: 222 47% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 8%;
+
+    --info: 199 89% 48%;
+    --info-foreground: 222 47% 8%;
+
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.5rem;
+
+    /* Industrial Status Colors */
+    --status-active: 142 76% 36%;
+    --status-idle: 45 93% 47%;
+    --status-error: 0 84% 60%;
+    --status-offline: 215 20% 35%;
+
+    /* Glow Effects */
+    --glow-primary: 0 0 20px hsl(217 91% 60% / 0.3);
+    --glow-success: 0 0 20px hsl(142 76% 36% / 0.4);
+    --glow-warning: 0 0 20px hsl(38 92% 50% / 0.4);
+    --glow-error: 0 0 20px hsl(0 84% 60% / 0.4);
+
+    /* Sidebar */
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 222 47% 8%;
+    --sidebar-accent: 215 28% 14%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 215 28% 14%;
+    --sidebar-ring: 217 91% 60%;
+
+    /* Chart Colors */
+    --chart-1: 217 91% 60%;
+    --chart-2: 142 76% 36%;
+    --chart-3: 45 93% 47%;
+    --chart-4: 0 84% 60%;
+    --chart-5: 280 65% 60%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full hover:bg-muted-foreground/50;
+  }
+}
+
+@layer components {
+  /* Industrial Card Glow Effects */
+  .card-glow-success {
+    box-shadow: 0 0 30px hsl(142 76% 36% / 0.15), inset 0 1px 0 hsl(142 76% 36% / 0.1);
+  }
+
+  .card-glow-warning {
+    box-shadow: 0 0 30px hsl(38 92% 50% / 0.15), inset 0 1px 0 hsl(38 92% 50% / 0.1);
+  }
+
+  .card-glow-error {
+    box-shadow: 0 0 30px hsl(0 84% 60% / 0.2), inset 0 1px 0 hsl(0 84% 60% / 0.1);
+  }
+
+  .card-glow-idle {
+    box-shadow: 0 0 30px hsl(215 20% 35% / 0.15), inset 0 1px 0 hsl(215 20% 35% / 0.1);
+  }
+
+  /* Status Indicator Pulse */
+  .status-pulse-active {
+    animation: pulse-success 2s infinite;
+  }
+
+  .status-pulse-warning {
+    animation: pulse-warning 1.5s infinite;
+  }
+
+  .status-pulse-error {
+    animation: pulse-error 1s infinite;
+  }
+
+  /* Industrial Panel Styles */
+  .industrial-panel {
+    @apply bg-card border border-border rounded-lg p-4;
+    background: linear-gradient(180deg, hsl(222 47% 13%) 0%, hsl(222 47% 10%) 100%);
+  }
+
+  .industrial-panel-header {
+    @apply flex items-center justify-between pb-3 border-b border-border/50 mb-4;
+  }
+
+  /* Data Display Mono Font */
+  .font-mono-data {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Metric Value Styling */
+  .metric-value {
+    @apply text-2xl font-bold font-mono-data tracking-tight;
+  }
+
+  .metric-unit {
+    @apply text-sm text-muted-foreground ml-1;
+  }
+
+  /* Grid Pattern Background */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(215 28% 17% / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(215 28% 17% / 0.5) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+@layer utilities {
+  /* Text Gradient */
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(199 89% 48%) 100%);
+  }
+
+  /* Status Colors */
+  .text-status-active { color: hsl(var(--status-active)); }
+  .text-status-idle { color: hsl(var(--status-idle)); }
+  .text-status-error { color: hsl(var(--status-error)); }
+  .text-status-offline { color: hsl(var(--status-offline)); }
+
+  .bg-status-active { background-color: hsl(var(--status-active)); }
+  .bg-status-idle { background-color: hsl(var(--status-idle)); }
+  .bg-status-error { background-color: hsl(var(--status-error)); }
+  .bg-status-offline { background-color: hsl(var(--status-offline)); }
+
+  .border-status-active { border-color: hsl(var(--status-active)); }
+  .border-status-idle { border-color: hsl(var(--status-idle)); }
+  .border-status-error { border-color: hsl(var(--status-error)); }
+}
+
+@keyframes pulse-success {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(142 76% 36% / 0.4); }
+  50% { box-shadow: 0 0 0 8px hsl(142 76% 36% / 0); }
+}
+
+@keyframes pulse-warning {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(38 92% 50% / 0.4); }
+  50% { box-shadow: 0 0 0 8px hsl(38 92% 50% / 0); }
+}
+
+@keyframes pulse-error {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(0 84% 60% / 0.5); }
+  50% { box-shadow: 0 0 0 10px hsl(0 84% 60% / 0); }
+}
+
+/* Machine Card Hover Effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-effect {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(217 91% 60% / 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
